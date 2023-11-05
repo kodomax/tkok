@@ -74,7 +74,8 @@ const formatItems = (items) => {
 }
 
 export const parseRawItems = async () => {
-  const rawData = await fetch('src/droplist.txt');
+  // const rawData = await fetch('src/droplist.txt');
+  const rawData = await fetch('/droplist.txt');
   const textData = await rawData.text();
   const splittedData = divideByBoss(textData);
   return formatItems(splittedData)
