@@ -1,43 +1,38 @@
 
-import { useEffect, useState } from 'react'
-import { parseRawItems } from './helpers'
-import './App.css'
+import { useState } from 'react'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Filters from './components/Filters';
+import ItemList from './components/ItemList';
 
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Boss from './Boss';
-
+const theme = createTheme({
+  palette: {
+    gold: {
+      main: 'gold'
+    },
+    slate400: {
+      main: '#94a3b8'
+    },
+    primary: {
+      main: '#FFD700'
+    },
+    secondary: {
+      main: '#000000',
+    },
+  },
+});
 
 function App() {
-  const [data, setData] = useState([])
+  const [isFilterOpened, setIsFilterOpened] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const parsedData = await parseRawItems();
-      setData(parsedData)
-    })()
-  }, [])
+  const handleDrawerToggle = () => {
+    setIsFilterOpened(prev => !prev);
+  };
 
   return (
-    <>
-      <CssBaseline />
-
-      <AppBar position="sticky">
-        <Toolbar className='flex justify-center bg-gradient-to-r from-gray-500 to-gray-600'>
-          <Typography variant="h6" color="inherit" noWrap>
-            pososal?
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
-      <main className='flex flex-col gap-8 my-8'>
-        {data.map((boss, i) => (
-          <Boss name={boss.name} info={boss.info} items={boss.items} key={boss.name} />
-        ))}
-      </main>
-    </>
+    <ThemeProvider theme={theme}>
+      <Filters isOpened={isFilterOpened} handleToggle={handleDrawerToggle} />
+      <ItemList handleDrawerToggle={handleDrawerToggle} />
+    </ThemeProvider>
   )
 }
 
