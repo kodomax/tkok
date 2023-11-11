@@ -12,8 +12,9 @@ import Radio from '@mui/material/Radio';
 
 import { SOURCES, BOSSES, BOSS_TYPES, TYPES, SLOTS, HEROES, STATS } from '../types';
 import SelectFilter from './SelectFilter';
+import LevelFilter from './LevelFilter';
 
-const Filters = ({ isOpened, handleToggle }) => {
+const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters }) => {
 
   const drawer = (
     <div className='h-full bg-slate-100'>
@@ -29,7 +30,7 @@ const Filters = ({ isOpened, handleToggle }) => {
       </Toolbar>
 
       <div className='p-4 w-full'>
-        <Button variant="contained" color='gold' fullWidth>
+        <Button variant="contained" color='gold' fullWidth onClick={clearFilters}>
           Clear filters
         </Button>
       </div>
@@ -70,6 +71,11 @@ const Filters = ({ isOpened, handleToggle }) => {
           <SelectFilter label="Item type" options={TYPES} />
           <SelectFilter label="Stat" options={STATS} />
           <SelectFilter label="Hero special" options={HEROES} />
+
+          <div className='px-3'>
+            <Typography sx={{ fontSize: 17, fontWeight: 'bold', pb: 4 }}>Item level:</Typography>
+            <LevelFilter changeFilter={changeFilter} />
+          </div>
         </div>
       </div>
     </div>

@@ -11,10 +11,12 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import Item from './Item';
 import { items } from '../items';
+import { useClearFilters } from '../hooks/useClearFilters';
 
 const ItemList = ({ handleDrawerToggle, filters, changeFilter }) => {
   const [query, setQuery] = useState('')
   const debouncedQuery = useDeferredValue(query);
+  useClearFilters(() => setQuery(''))
 
   useEffect(() => {
     if (debouncedQuery === '') {
@@ -30,9 +32,9 @@ const ItemList = ({ handleDrawerToggle, filters, changeFilter }) => {
   }, [debouncedQuery])
 
   const filteredItems = useMemo(() => {
-    return Object.entries(filters).reduce((acc, [filterName, filterValue]) => {
-      return items.filter(item => item[filterName].toLowerCase().includes(filterValue.toLowerCase()))
-    }, [])
+    return items
+      .filter(item => item.name.toLowerCase().includes(filters.name.toLowerCase()))
+      .filter(item => item.level >= filters.level[0] && item.level <= filters.level[1])
   }, [filters])
 
   const handleNameInput = useCallback((event) => {

@@ -53,7 +53,7 @@ const Item = ({ item }) => {
               <b>Level:</b> {item.level}
             </Typography>
 
-            <Box display="flex" gap={0.5} alignItems="center">
+            <Box display="flex" gap={0.5} alignItems="center" paddingBottom={1}>
               <Typography sx={{ fontSize: 14 }}>
                 <b>Quality:</b>
               </Typography>
@@ -77,13 +77,13 @@ const Item = ({ item }) => {
               {item.source?.kill && ` (${item.source?.kill})`}
             </Typography>
 
-            <Typography sx={{ fontSize: 14 }}>
+            <Typography sx={{ fontSize: 14, pb: 1 }}>
               <b>Stats:</b>
             </Typography>
 
             {Object.entries(item.stats).map(([statName, statValue]) => (
               <Typography sx={{ fontSize: 14, pl: 1 }} key={`${item.name}_${statName}`}>
-                {statName}: {statValue}
+                <b>{statName}:</b> {statValue}
               </Typography>
             ))}
 

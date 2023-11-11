@@ -1917,3 +1917,7 @@ export const items = [
     }
   },
 ]
+
+const sortedItems = items.sort((item1, item2) => item1.level - item2.level);
+export const MIN_LEVEL = sortedItems.at(0).level;
+export const MAX_LEVEL = sortedItems.at(-1).level;
