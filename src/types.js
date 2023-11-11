@@ -18,8 +18,8 @@ export const BOSS_TYPES = {
 }
 
 export const SOURCES = {
-  QUEST: 'Quest',
   BOSS: 'Boss',
+  QUEST: 'Quest',
 }
 
 export const HEROES = {

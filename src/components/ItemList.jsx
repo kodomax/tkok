@@ -12,6 +12,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Item from './Item';
 import { items } from '../items';
 import { useClearFilters } from '../hooks/useClearFilters';
+import { SOURCES } from '../types';
 
 const ItemList = ({ handleDrawerToggle, filters, changeFilter }) => {
   const [query, setQuery] = useState('')
@@ -31,11 +32,40 @@ const ItemList = ({ handleDrawerToggle, filters, changeFilter }) => {
     return () => clearTimeout(timerId)
   }, [debouncedQuery])
 
-  const filteredItems = useMemo(() => {
-    return items
-      .filter(item => item.name.toLowerCase().includes(filters.name.toLowerCase()))
-      .filter(item => item.level >= filters.level[0] && item.level <= filters.level[1])
-  }, [filters])
+  const filteredItems = useMemo(() => Object.entries(filters).reduce((acc, [filterName, filterValue]) => {
+    if (!filterValue) return acc;
+
+    if (filterName === 'level') {
+      return acc.filter(item => item.level >= filterValue[0] && item.level <= filterValue[1]);
+    }
+    if (filterName === 'name') {
+      return acc.filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()))
+    }
+    if (filterName === 'slot') {
+      return acc.filter(item => item.slot === filterValue)
+    }
+    if (filterName === 'type') {
+      return acc.filter(item => item.type === filterValue)
+    }
+    if (filterName === 'stat') {
+      return acc.filter(item => Object.keys(item.stats).includes(filterValue) && item.stats[filterValue] > 0)
+    }
+    if (filterName === 'hero') {
+      return acc.filter(item => Object.keys(item?.special || []).includes(filterValue))
+    }
+    if (filterName === 'source') {
+      return acc.filter(item => item.source.type === filterValue)
+    }
+    if (filterName === 'bossName') {
+      return acc.filter(item => item.source.id === filterValue)
+    }
+    if (filterName === 'bossType') {
+      return acc.filter(item => item.source.kill === filterValue)
+    }
+    if (filterName === 'questName') {
+      return acc.filter(item => item.source.id === filterValue && item.source.type === SOURCES.QUEST)
+    }
+  }, items), [filters])
 
   const handleNameInput = useCallback((event) => {
     setQuery(event.target.value)

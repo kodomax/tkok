@@ -5,16 +5,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
 
-import { SOURCES, BOSSES, BOSS_TYPES, TYPES, SLOTS, HEROES, STATS } from '../types';
+import { TYPES, SLOTS, HEROES, STATS } from '../types';
 import SelectFilter from './SelectFilter';
 import LevelFilter from './LevelFilter';
+import SourceFilter from './SourceFilter';
 
-const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters }) => {
+const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters, filters }) => {
 
   const drawer = (
     <div className='h-full bg-slate-100'>
@@ -37,29 +34,8 @@ const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters }) => {
 
       <Divider />
 
-      <div className='p-2 w-full'>
-        <div className='px-2'>
-          <Typography sx={{ fontSize: 17, fontWeight: 'bold' }}>Source:</Typography>
-          <FormControl >
-            <RadioGroup
-              defaultValue=""
-              name="radio-buttons-group"
-            >
-              {Object.values(SOURCES).map((item) => (
-                <FormControlLabel
-                  value={item}
-                  label={item}
-                  key={item}
-                  control={<Radio color='primary' size='small' />} />
-              ))}
-            </RadioGroup>
-          </FormControl>
-        </div>
-
-        <div className='flex flex-col gap-4 pb-2 px-2'>
-          <SelectFilter label="Boss name" options={BOSSES} />
-          <SelectFilter label="Boss type" options={BOSS_TYPES} />
-        </div>
+      <div className='p-2 w-full pb-4'>
+        <SourceFilter filters={filters} changeFilter={changeFilter} />
       </div>
 
       <Divider />
@@ -67,10 +43,34 @@ const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters }) => {
       <div className='py-2 px-2'>
         <Typography sx={{ fontSize: 17, fontWeight: 'bold' }}>Item details:</Typography>
         <div className='flex flex-col gap-4 p-2'>
-          <SelectFilter label="Slot" options={SLOTS} />
-          <SelectFilter label="Item type" options={TYPES} />
-          <SelectFilter label="Stat" options={STATS} />
-          <SelectFilter label="Hero special" options={HEROES} />
+          <SelectFilter
+            label="Slot"
+            options={SLOTS}
+            type="slot"
+            changeFilter={changeFilter}
+            value={filters.slot}
+          />
+          <SelectFilter
+            label="Item type"
+            options={TYPES}
+            type="type"
+            changeFilter={changeFilter}
+            value={filters.type}
+          />
+          <SelectFilter
+            label="Stat"
+            options={STATS}
+            type="stat"
+            changeFilter={changeFilter}
+            value={filters.stat}
+          />
+          <SelectFilter
+            label="Hero special"
+            options={HEROES}
+            type="hero"
+            changeFilter={changeFilter}
+            value={filters.hero}
+          />
 
           <div className='px-3'>
             <Typography sx={{ fontSize: 17, fontWeight: 'bold', pb: 4 }}>Item level:</Typography>

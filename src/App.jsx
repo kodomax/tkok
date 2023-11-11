@@ -31,6 +31,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Filters
+        filters={filters}
         isOpened={isFilterOpened}
         handleToggle={handleDrawerToggle}
         changeFilter={changeFilter}
