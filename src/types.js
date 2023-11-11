@@ -1,5 +1,5 @@
 export const QUESTS = {
-  PROVING_YOUR_WORTH: 0,
+  PROVING_YOUR_WORTH: 'Proving Your Worth',
 }
 
 export const BOSSES = {
@@ -45,44 +45,44 @@ export const HEROES = {
 }
 
 export const SLOTS = {
-  MAINHAND: 'mainhand',
-  OFFHAND: 'offhand',
-  NECK: 'neck',
-  RING: 'ring',
-  LEGS: 'legs',
-  BELT: 'belt',
-  BOOTS: 'boots',
-  GLOVES: 'gloves',
-  CHEST: 'chest',
-  HELM: 'helm',
-  SHOULDER: 'shoulder',
+  MAINHAND: 'Mainhand',
+  OFFHAND: 'Offhand',
+  NECK: 'Neck',
+  RING: 'Ring',
+  LEGS: 'Legs',
+  BELT: 'Belt',
+  BOOTS: 'Boots',
+  GLOVES: 'Gloves',
+  CHEST: 'Chest',
+  HELM: 'Helm',
+  SHOULDER: 'Shoulder',
 }
 
 export const TYPES = {
-  QUIVER: 'quiver',
-  SHIELD: 'shield',
-  BOOK: 'book',
-  WAND: 'wand',
-  DUAL_DAGGER: 'dual dagger',
-  DUAL_AXE: 'dual axe',
-  IDOL: 'idol',
-  ACCESSORY: 'accessory',
-  MITHRIL: 'mithril',
-  LEATHER: 'leather',
-  CLOTH: 'cloth',
-  MAIL: 'mail',
-  SWORD: 'sword',
-  BOW: 'bow',
-  DAGGER: 'dagger',
-  STAFF: 'staff',
-  MACE: 'mace',
-  AXE: 'axe',
+  QUIVER: 'Quiver',
+  SHIELD: 'Shield',
+  BOOK: 'Book',
+  WAND: 'Wand',
+  DUAL_DAGGER: 'Dual dagger',
+  DUAL_AXE: 'Dual axe',
+  IDOL: 'Idol',
+  ACCESSORY: 'Accessory',
+  MITHRIL: 'Mithril',
+  LEATHER: 'Leather',
+  CLOTH: 'Cloth',
+  MAIL: 'Mail',
+  SWORD: 'Sword',
+  BOW: 'Bow',
+  DAGGER: 'Dagger',
+  STAFF: 'Staff',
+  MACE: 'Mace',
+  AXE: 'Axe',
 }
 
 export const QUALITIES = {
-  ENCHANTED: 'enchanted',
-  EPIC: 'epic',
-  RELIC: 'relic',
+  ENCHANTED: 'Enchanted',
+  EPIC: 'Epic',
+  RELIC: 'Relic',
 }
 
 export const STATS = {

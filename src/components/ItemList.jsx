@@ -6,10 +6,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
-import { items } from '../items';
+import Grid from '@mui/material/Unstable_Grid2';
+
 import Item from './Item';
+import { items } from '../items';
 
 const ItemList = ({ handleDrawerToggle }) => {
+
+  const getFillerWidth = (columns) => `${(columns - items.length % columns) * (100 / columns)}%`
 
   const containerStyles = {
     width: { sm: 'calc(100% - 240px)' },
@@ -57,11 +61,21 @@ const ItemList = ({ handleDrawerToggle }) => {
       <Box component="main" sx={containerStyles}>
         <Toolbar />
 
-        <div className='flex flex-wrap p-4 gap-4 justify-center'>
-          {items.map((item) => (
-            <Item key={item.name} item={item} />
-          ))}
-        </div>
+        <Box component="div" sx={{ padding: 3 }}>
+          <Grid container spacing={3} columns={12} sx={{}}>
+            {items.map((item) => (
+              <Grid xs={12} sm={6} md={4} key={item.name} style={{ minWidth: 300, flexGrow: 1 }}>
+                <Item item={item} />
+              </Grid>
+            ))}
+
+            {[...Array(2)].map((_, i) => (
+              <Grid key={`filler${i}`} style={{ flexGrow: 1, padding: 0, minWidth: 300 }} sx={{
+                flexBasis: { md: '33%', sm: '50%', xs: 0 }
+              }} />
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </>
   )

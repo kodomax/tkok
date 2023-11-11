@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
+
 import { SOURCES, BOSSES, BOSS_TYPES, TYPES, SLOTS, HEROES, STATS } from '../types';
 import SelectFilter from './SelectFilter';
 
@@ -77,7 +77,6 @@ const Filters = ({ isOpened, handleToggle }) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
       <Box
         component="nav"
         sx={{ width: { sm: 240 }, flexShrink: { sm: 0 } }}
