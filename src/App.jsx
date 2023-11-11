@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Filters from './components/Filters';
@@ -55,6 +55,13 @@ const theme = createTheme({
 
 function App() {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
+  const [filters, setFilters] = useState({
+    name: ''
+  });
+
+  const changeFilter = useCallback((type, value) => {
+    setFilters(prevFilters => ({ ...prevFilters, [type]: value }))
+  }, [])
 
   const handleDrawerToggle = () => {
     setIsFilterOpened(prev => !prev);
@@ -64,7 +71,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Filters isOpened={isFilterOpened} handleToggle={handleDrawerToggle} />
-      <ItemList handleDrawerToggle={handleDrawerToggle} />
+      <ItemList handleDrawerToggle={handleDrawerToggle} filters={filters} changeFilter={changeFilter} />
     </ThemeProvider>
   )
 }

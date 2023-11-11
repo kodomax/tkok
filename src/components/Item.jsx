@@ -42,7 +42,7 @@ const Item = ({ item }) => {
         <Divider />
 
         <CardContent sx={{ padding: '8px 20px', textAlign: 'start' }}>
-          <Box sx={{ overflow: "hidden", overflowY: "scroll", height: 300 }}>
+          <Box sx={{ overflow: "hidden", overflowY: "scroll", height: { md: 300 } }}>
             {item.desc && (
               <Typography sx={{ fontSize: 14, fontStyle: 'italic', my: 1.5, textAlign: 'center' }} color="text.secondary" >
                 {item.desc}
