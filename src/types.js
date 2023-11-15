@@ -1,5 +1,7 @@
 export const QUESTS = {
   PROVING_YOUR_WORTH: 'Proving Your Worth',
+  SHAMANISTIC_MAGIC: 'Shamanistic Magic',
+  RUINED_TEMPLE: 'Ruined Temple Drops'
 }
 
 export const BOSSES = {
@@ -9,6 +11,12 @@ export const BOSSES = {
   NAZTAR: 'Naztar',
   KARRIX: 'Karrix',
   AVNOS: 'Avnos',
+  KARNOS: 'Karnos',
+  KARAVNOS: 'Karavnos',
+  MUARKI: 'Muarki',
+  VJAIER: 'Vjaier',
+  CRUELTIS: 'Crueltis',
+  TALNAVI: 'Tal\'Navi',
 }
 
 export const BOSS_TYPES = {
