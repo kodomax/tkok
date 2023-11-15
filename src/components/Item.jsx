@@ -14,10 +14,18 @@ import { grey } from '@mui/material/colors';
 import { QUALITIES } from '../types/itemQualities';
 import { formatStatValue } from '../utils';
 
-const Item = ({ item }) => {
+const Item = ({ item, isWished, addToWishlist, removeFromWishlist }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const toggleHover = useCallback(() => setIsHovered(prev => !prev), [])
+
+  const toggleWished = useCallback(() => {
+    if (isWished) {
+      removeFromWishlist(item.name)
+    } else {
+      addToWishlist(item.name)
+    }
+  }, [isWished])
 
   const getQualityColor = useCallback(() => {
     switch (item.quality) {
@@ -110,8 +118,9 @@ const Item = ({ item }) => {
             color='secondary'
             fullWidth
             sx={{ fontWeight: 'bold' }}
+            onClick={toggleWished}
           >
-            Add to wishlist
+            {isWished ? 'Remove from wishlist' : 'Add to wishlist'}
           </Button>
         </CardActions>
       </Card>

@@ -8,7 +8,7 @@ export const formatStatValue = (type, value) => {
   return value;
 };
 
-export const filterItems = (filters, items) =>
+export const filterItems = (filters, items, wishlistedItems) =>
   Object.entries(filters).reduce((acc, [filterName, filterValue]) => {
     if (!filterValue) return acc;
 
@@ -49,4 +49,15 @@ export const filterItems = (filters, items) =>
     if (filterName === 'questName') {
       return acc.filter(item => item.source.id === filterValue && item.source.type === SOURCES.QUEST)
     }
+    if (filterName === 'wishlist') {
+      return acc.filter(item => wishlistedItems.includes(item.name))
+    }
   }, items);
+
+export const getWishlistFromStorage = () => {
+  return JSON.parse(localStorage.getItem('wishlist')) || []
+};
+
+export const writeWishlistToStorage = (wishlist) => {
+  localStorage.setItem('wishlist', JSON.stringify(wishlist))
+};

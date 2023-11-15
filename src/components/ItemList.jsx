@@ -12,12 +12,17 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Item from './Item';
 import { items } from '../data/items';
 import { useClearFilters } from '../hooks/useClearFilters';
-import { filterItems } from '../utils';
+import { filterItems, writeWishlistToStorage, getWishlistFromStorage } from '../utils';
 
 const ItemList = ({ handleDrawerToggle, filters, changeFilter }) => {
+  const [wishlistedItems, setWishlistedItems] = useState(() => getWishlistFromStorage());
   const [query, setQuery] = useState('')
   const debouncedQuery = useDeferredValue(query);
   useClearFilters(() => setQuery(''))
+
+  useEffect(() => {
+    writeWishlistToStorage(wishlistedItems)
+  }, [wishlistedItems])
 
   useEffect(() => {
     if (debouncedQuery === '') {
@@ -32,10 +37,18 @@ const ItemList = ({ handleDrawerToggle, filters, changeFilter }) => {
     return () => clearTimeout(timerId)
   }, [debouncedQuery])
 
-  const filteredItems = useMemo(() => filterItems(filters, items), [filters])
+  const filteredItems = useMemo(() => filterItems(filters, items, wishlistedItems), [filters, wishlistedItems])
 
   const handleNameInput = useCallback((event) => {
     setQuery(event.target.value)
+  }, [])
+
+  const addToWishlist = useCallback((itemName) => {
+    setWishlistedItems(prev => [...prev, itemName])
+  }, [])
+
+  const removeFromWishlist = useCallback((itemName) => {
+    setWishlistedItems(prev => prev.filter(item => item !== itemName))
   }, [])
 
   const containerStyles = {
@@ -95,7 +108,12 @@ const ItemList = ({ handleDrawerToggle, filters, changeFilter }) => {
             <Grid container spacing={3} columns={12}>
               {filteredItems.map((item) => (
                 <Grid xs={12} sm={6} md={4} key={item.name} style={{ minWidth: 300, flexGrow: 1 }}>
-                  <Item item={item} />
+                  <Item
+                    item={item}
+                    isWished={wishlistedItems.includes(item.name)}
+                    addToWishlist={addToWishlist}
+                    removeFromWishlist={removeFromWishlist}
+                  />
                 </Grid>
               ))}
 

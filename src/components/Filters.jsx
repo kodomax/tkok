@@ -10,6 +10,7 @@ import { TYPES, SLOTS, HEROES, STATS } from '../types/itemQualities';
 import SelectFilter from './SelectFilter';
 import LevelFilter from './LevelFilter';
 import SourceFilter from './SourceFilter';
+import WishlistFilter from './WishlistFilter';
 
 const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters, filters }) => {
 
@@ -73,8 +74,12 @@ const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters, filters }
           />
 
           <div className='px-3'>
-            <Typography sx={{ fontSize: 17, fontWeight: 'bold', pb: 4 }}>Item level:</Typography>
+            <Typography sx={{ fontSize: 17, fontWeight: 'bold' }}>Item level:</Typography>
             <LevelFilter changeFilter={changeFilter} />
+          </div>
+
+          <div className='ml-2'>
+            <WishlistFilter changeFilter={changeFilter} />
           </div>
         </div>
       </div>

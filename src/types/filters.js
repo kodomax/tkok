@@ -11,6 +11,7 @@ export const FILTERS = {
   BOSS_NAME: 'bossName',
   BOSS_TYPE: 'bossType',
   QUEST_NAME: 'questName',
+  WISHLIST: 'wishlist'
 }
 
 export const DEFAULT_FILTERS = {
@@ -24,4 +25,5 @@ export const DEFAULT_FILTERS = {
   [FILTERS.BOSS_NAME]: '',
   [FILTERS.BOSS_TYPE]: '',
   [FILTERS.QUEST_NAME]: '',
+  [FILTERS.WISHLIST]: false,
 }
