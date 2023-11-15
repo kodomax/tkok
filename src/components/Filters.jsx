@@ -27,8 +27,8 @@ const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters, filters }
         </div>
       </Toolbar>
 
-      <div className='p-4 w-full'>
-        <Button variant="contained" color='gold' fullWidth onClick={clearFilters}>
+      <div className='p-2 w-full'>
+        <Button size="small" variant="contained" color='gold' fullWidth onClick={clearFilters}>
           Clear filters
         </Button>
       </div>
@@ -83,7 +83,7 @@ const Filters = ({ isOpened, handleToggle, changeFilter, clearFilters, filters }
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 
   return (
