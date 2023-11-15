@@ -1,39 +1,39 @@
 import { useCallback, useEffect, useState } from 'react';
-import FormControl from '@mui/material/FormControl';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
 import Typography from '@mui/material/Typography';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
 import SelectFilter from './SelectFilter';
 import { BOSSES, BOSS_TYPES, SOURCES, QUESTS } from '../types/itemQualities';
 import { useClearFilters } from '../hooks/useClearFilters';
 
 const SourceFilter = ({ filters, changeFilter }) => {
-  const [radioValue, setRadioValue] = useState('')
-  useClearFilters(() => setRadioValue(''))
+  const [source, setSource] = useState('');
+  useClearFilters(() => setSource(''))
 
-  const handleSourceChange = useCallback((event) => {
-    setRadioValue(event.target.value)
-  }, [])
+  const handleAlignment = useCallback((_, newSource) => {
+    setSource(newSource);
+  }, []);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      changeFilter('source', radioValue)
-      if (radioValue === SOURCES.BOSS) {
+      changeFilter('source', source)
+      if (source === SOURCES.BOSS) {
         changeFilter('questName', '')
       }
-      if (radioValue === SOURCES.QUEST) {
+      if (source === SOURCES.QUEST) {
         changeFilter('bossName', '')
         changeFilter('bossType', '')
       }
     }, 300)
 
     return () => clearTimeout(timerId)
-  }, [radioValue])
+  }, [source])
 
   const renderOptions = useCallback(() => {
-    switch (radioValue) {
+    switch (source) {
       case SOURCES.BOSS:
         return (
           <>
@@ -70,28 +70,39 @@ const SourceFilter = ({ filters, changeFilter }) => {
       default:
         return null
     }
-  }, [radioValue, filters]);
+  }, [source, filters]);
 
   return (
     <>
       <div className='px-2'>
         <Typography sx={{ fontSize: 17, fontWeight: 'bold' }}>Source:</Typography>
-        <FormControl >
-          <RadioGroup value={radioValue} onChange={handleSourceChange} name="source">
-            {Object.values(SOURCES).map((item) => (
-              <FormControlLabel
-                value={item}
-                label={item}
-                key={item}
-                control={<Radio color='primary' size='small' />} />
-            ))}
-          </RadioGroup>
-        </FormControl>
+
+        <ToggleButtonGroup
+          value={source}
+          exclusive
+          onChange={handleAlignment}
+          aria-label="Source selector"
+          sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        >
+          <Typography sx={{ fontSize: 14, fontWeight: 'bold', pr: 1 }}>Boss</Typography>
+
+          <ToggleButton value={SOURCES.BOSS} size="small" aria-label="boss">
+            <CrisisAlertIcon />
+          </ToggleButton>
+          <ToggleButton value={SOURCES.QUEST} size="small" aria-label="quest">
+            <ContactSupportIcon />
+          </ToggleButton>
+
+          <Typography sx={{ fontSize: 14, fontWeight: 'bold', pl: 1 }}>Quest</Typography>
+        </ToggleButtonGroup>
       </div>
 
-      <div className='flex flex-col gap-4 px-2'>
-        {renderOptions()}
-      </div>
+      {source && (
+        <div className='flex flex-col gap-4 px-2 pt-4'>
+          {renderOptions()}
+        </div>
+      )}
+
     </>
   )
 }
