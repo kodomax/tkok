@@ -5,8 +5,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import Typography from '@mui/material/Typography';
 
-import { BOSSES, BOSS_TYPES, SOURCES, QUESTS } from '../types';
 import SelectFilter from './SelectFilter';
+import { BOSSES, BOSS_TYPES, SOURCES, QUESTS } from '../types/itemQualities';
 import { useClearFilters } from '../hooks/useClearFilters';
 
 const SourceFilter = ({ filters, changeFilter }) => {

@@ -1,4 +1,4 @@
-import { QUESTS, BOSSES, BOSS_TYPES, SOURCES, HEROES, SLOTS, TYPES, QUALITIES, STATS } from './types'
+import { QUESTS, BOSSES, BOSS_TYPES, SOURCES, HEROES, SLOTS, TYPES, QUALITIES, STATS } from '../types/itemQualities'
 
 export const items = [
 

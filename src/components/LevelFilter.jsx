@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Slider from '@mui/material/Slider';
 
-import { MIN_LEVEL, MAX_LEVEL } from '../items';
+import { MIN_LEVEL, MAX_LEVEL } from '../data/items';
 import { useClearFilters } from '../hooks/useClearFilters';
 
 const LevelFilter = ({ changeFilter }) => {

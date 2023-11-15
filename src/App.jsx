@@ -4,13 +4,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Filters from './components/Filters';
 import ItemList from './components/ItemList';
-import { getDefaultFilters } from './defaultFilters';
 import { useMaterialTheme } from './hooks/useMaterialTheme';
 import { useClearFilters } from './hooks/useClearFilters';
+import { DEFAULT_FILTERS } from './types/filters';
 
 function App() {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
-  const [filters, setFilters] = useState(() => getDefaultFilters());
+  const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const { resetFilterValues } = useClearFilters();
   const { theme } = useMaterialTheme();
 
@@ -19,7 +19,7 @@ function App() {
   }, [])
 
   const clearFilters = useCallback(() => {
-    setFilters(() => getDefaultFilters())
+    setFilters(DEFAULT_FILTERS)
     resetFilterValues()
   }, [])
 

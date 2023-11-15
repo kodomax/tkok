@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Button from '@mui/material/Button';
 
-import { TYPES, SLOTS, HEROES, STATS } from '../types';
+import { TYPES, SLOTS, HEROES, STATS } from '../types/itemQualities';
 import SelectFilter from './SelectFilter';
 import LevelFilter from './LevelFilter';
 import SourceFilter from './SourceFilter';

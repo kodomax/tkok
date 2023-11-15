@@ -11,7 +11,7 @@ import Divider from '@mui/material/Divider';
 import Fade from '@mui/material/Fade';
 import { grey } from '@mui/material/colors';
 
-import { QUALITIES } from '../types';
+import { QUALITIES } from '../types/itemQualities';
 import { formatStatValue } from '../utils';
 
 const Item = ({ item }) => {
