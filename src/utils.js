@@ -1,4 +1,4 @@
-import { PERCENTAGE_STATS, SOURCES } from './types/itemQualities';
+import { PERCENTAGE_STATS, SOURCES, TYPES } from './types/itemQualities';
 
 export const formatStatValue = (type, value) => {
   if (PERCENTAGE_STATS.includes(type)) {
@@ -22,7 +22,14 @@ export const filterItems = (filters, items) =>
       return acc.filter(item => item.slot === filterValue)
     }
     if (filterName === 'type') {
-      return acc.filter(item => item.type === filterValue)
+      const mithrilAppliedTypes = [TYPES.MAIL, TYPES.LEATHER, TYPES.CLOTH];
+      return acc.filter(item => {
+        if (mithrilAppliedTypes.includes(filterValue)) {
+          return item.type === filterValue || item.type === TYPES.MITHRIL;
+        }
+
+        return item.type === filterValue;
+      })
     }
     if (filterName === 'stat') {
       return acc.filter(item => Object.keys(item.stats).includes(filterValue) && item.stats[filterValue] > 0)
