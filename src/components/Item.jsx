@@ -12,6 +12,7 @@ import Fade from '@mui/material/Fade';
 import { grey } from '@mui/material/colors';
 
 import { QUALITIES } from '../types';
+import { formatStatValue } from '../utils';
 
 const Item = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -83,7 +84,7 @@ const Item = ({ item }) => {
 
             {Object.entries(item.stats).map(([statName, statValue]) => (
               <Typography sx={{ fontSize: 14, pl: 1 }} key={`${item.name}_${statName}`}>
-                <b>{statName}:</b> {statValue}
+                <b>{statName}:</b> {formatStatValue(statName, statValue)}
               </Typography>
             ))}
 
