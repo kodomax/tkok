@@ -4,9 +4,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 import { FILTERS } from '../types/filters'
+import { useClearFilters } from '../hooks/useClearFilters';
 
 const WishlistFilter = ({ changeFilter }) => {
   const [isWishlistActive, setIsWishlistActive] = useState(false);
+  useClearFilters(() => setIsWishlistActive(false))
 
   const toggleWishlist = useCallback(() => {
     setIsWishlistActive(prev => {

@@ -38,6 +38,9 @@ const Item = ({ item, isWished, addToWishlist, removeFromWishlist }) => {
     }
   }, [])
 
+  const positiveStats = Object.entries(item.stats).filter(([_, statValue]) => statValue > 0)
+  const negativeStats = Object.entries(item.stats).filter(([_, statValue]) => statValue <= 0)
+
   return (
     <Fade in easing={{ enter: 'cubic-bezier(0.4, 0, 0.2, 1)' }}>
       <Card
@@ -90,11 +93,29 @@ const Item = ({ item, isWished, addToWishlist, removeFromWishlist }) => {
               <b>Stats:</b>
             </Typography>
 
-            {Object.entries(item.stats).map(([statName, statValue]) => (
-              <Typography sx={{ fontSize: 14, pl: 1 }} key={`${item.name}_${statName}`}>
-                <b>{statName}:</b> {formatStatValue(statName, statValue)}
-              </Typography>
-            ))}
+            <Box display="flex" gap={1} pb={1}>
+              <Divider orientation='vertical' flexItem sx={{ border: '2px solid #a7f285' }} />
+              <Box>
+                {positiveStats.map(([statName, statValue]) => (
+                  <Typography sx={{ fontSize: 14 }} key={`${item.name}_${statName}`}>
+                    <b>{statName}:</b> {formatStatValue(statName, statValue)}
+                  </Typography>
+                ))}
+              </Box>
+            </Box>
+
+            {negativeStats.length > 0 && (
+              <Box display="flex" gap={1}>
+                <Divider orientation='vertical' flexItem sx={{ border: '2px solid #f29585' }} />
+                <Box>
+                  {negativeStats.map(([statName, statValue]) => (
+                    <Typography sx={{ fontSize: 14 }} key={`${item.name}_${statName}`}>
+                      <b>{statName}:</b> {formatStatValue(statName, statValue)}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
+            )}
 
             {item?.special && (
               <>
