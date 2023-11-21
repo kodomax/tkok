@@ -17,6 +17,44 @@ export const BOSSES = {
   VJAIER: 'Vjaier',
   CRUELTIS: 'Crueltis',
   TALNAVI: 'Tal\'Navi',
+  MKARSA: 'M\'Karsa',
+  ANCIENT_HYDRA: 'Ancient Hydra',
+  ORTAKNA: 'Ortakna',
+  CRYPT_FIEND: 'Crypt Fiend',
+  GHOUL: 'Ghoul',
+  THE_TWINS: 'The Twins',
+  ZANATATH: 'Zanatath',
+  PARVIN: 'Parvin',
+  VILLARD: 'Villard',
+  ARKHAM: 'Arkham',
+}
+
+export const LINKS = {
+  BASE: 'https://tkokrpg.com/',
+  PREFIXES: {
+    [BOSSES.BROODMOTHER]: 'broodmother',
+    [BOSSES.NARITH]: 'narith',
+    [BOSSES.SAND_GOLEM]: 'sand-golem',
+    [BOSSES.NAZTAR]: 'naztar',
+    [BOSSES.KARRIX]: 'karrix',
+    [BOSSES.AVNOS]: 'avnos',
+    [BOSSES.KARNOS]: 'karnos',
+    [BOSSES.KARAVNOS]: 'karavnos',
+    [BOSSES.MUARKI]: 'muarki',
+    [BOSSES.VJAIER]: 'vjaier',
+    [BOSSES.CRUELTIS]: 'crueltis',
+    [BOSSES.TALNAVI]: 'talnavi',
+    [BOSSES.MKARSA]: 'mkarsa',
+    [BOSSES.ANCIENT_HYDRA]: 'ancient-hydra',
+    [BOSSES.ORTAKNA]: 'ortakna-3',
+    [BOSSES.CRYPT_FIEND]: 'crypt-fiend-2',
+    [BOSSES.GHOUL]: 'ghoul',
+    [BOSSES.THE_TWINS]: 'the-twins',
+    [BOSSES.ZANATATH]: 'zanatath-2',
+    [BOSSES.PARVIN]: 'parvin',
+    [BOSSES.VILLARD]: 'villard',
+    [BOSSES.ARKHAM]: 'arkham-2',
+  }
 }
 
 export const BOSS_TYPES = {

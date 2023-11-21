@@ -3288,7 +3288,7 @@ export const items = [
     name: 'Bizarre Belt',
     desc: '',
     slot: SLOTS.BELT,
-    type: TYPES.LEATHER,
+    type: TYPES.MAIL,
     level: 28,
     quality: QUALITIES.EPIC,
     source: {

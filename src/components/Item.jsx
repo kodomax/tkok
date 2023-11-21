@@ -7,11 +7,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
+import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import Fade from '@mui/material/Fade';
 import { grey } from '@mui/material/colors';
 
-import { QUALITIES } from '../types/itemQualities';
+import { QUALITIES, SOURCES, LINKS } from '../types/itemQualities';
 import { formatStatValue } from '../utils';
 
 const Item = ({ item, isWished, addToWishlist, removeFromWishlist }) => {
@@ -85,7 +86,22 @@ const Item = ({ item, isWished, addToWishlist, removeFromWishlist }) => {
             </Typography>
 
             <Typography sx={{ fontSize: 14, py: 1 }}>
-              <b>How to obtain:</b> {item.source.id}
+              <b>How to obtain: </b>
+
+              {item.source.type === SOURCES.BOSS ? (
+                <Link
+                  href={`${LINKS.BASE}${LINKS.PREFIXES[item.source.id]}`}
+                  underline="hover"
+                  target="_blank"
+                  rel="noreferrer"
+                  color="secondary"
+                >
+                  {item.source.id}
+                </Link>
+              ) : (
+                item.source.id
+              )}
+
               {item.source?.kill && ` (${item.source?.kill})`}
             </Typography>
 
