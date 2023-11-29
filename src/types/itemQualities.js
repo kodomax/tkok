@@ -1,7 +1,11 @@
 export const QUESTS = {
   PROVING_YOUR_WORTH: 'Proving Your Worth',
   SHAMANISTIC_MAGIC: 'Shamanistic Magic',
-  RUINED_TEMPLE: 'Ruined Temple Drops'
+  RUINED_TEMPLE: 'Ruined Temple Drops',
+  RUINED_TEMPLE_QUEST: 'Ruined Temple Quest',
+  TREASURE_HUNT: 'Treasure Hunt',
+  MEAT_WAGONS: 'The Meat Wagons',
+  INNER_TEMPLE_OFFHAND_SHOP: 'Inner Temple Shop',
 }
 
 export const BOSSES = {
