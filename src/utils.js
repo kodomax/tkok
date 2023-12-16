@@ -35,7 +35,7 @@ export const filterItems = (filters, items, wishlistedItems) =>
       return acc.filter(item => Object.keys(item.stats).includes(filterValue) && item.stats[filterValue] > 0)
     }
     if (filterName === 'hero') {
-      return acc.filter(item => Object.keys(item?.special || []).includes(filterValue))
+      return acc.filter(item => Object.keys(item?.special || []).includes(filterValue) || item?.restriction === filterValue)
     }
     if (filterName === 'source') {
       return acc.filter(item => item.source.type === filterValue)

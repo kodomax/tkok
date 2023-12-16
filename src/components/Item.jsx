@@ -85,6 +85,12 @@ const Item = ({ item, isWished, addToWishlist, removeFromWishlist }) => {
               <b>Type:</b> {item.type}
             </Typography>
 
+            {item.restriction && (
+              <Typography sx={{ fontSize: 14 }}>
+                <b style={{ color: '#8f0725' }}>Restriction:</b> {item.restriction}
+              </Typography>
+            )}
+
             <Typography sx={{ fontSize: 14, py: 1 }}>
               <b>How to obtain: </b>
 
